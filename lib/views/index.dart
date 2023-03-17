@@ -1,0 +1,17 @@
+export 'root/root_page.dart';
+export 'home/home_page.dart';
+export 'profile/profile_page.dart';
+export 'login/login_page.dart';
+export 'other/animation/animation_page.dart';
+export 'other/animation/pages/animation11.dart';
+export 'other/animation/pages/animation12.dart';
+export 'other/animation/pages/animation13.dart';
+export 'other/animation/pages/animation14.dart';
+export 'other/animation/pages/animation15.dart';
+export 'other/animation/pages/animation16.dart';
+export 'other/animation/pages/animation21.dart';
+export 'other/animation/pages/animation22.dart';
+export 'other/animation/pages/animation23.dart';
+export 'other/animation/pages/animation24.dart';
+export 'other/animation/pages/animation25.dart';
+export 'other/animation/pages/animation26.dart';
