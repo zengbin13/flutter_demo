@@ -58,9 +58,13 @@ class SubmitButton extends StatefulWidget {
 
 class _SubmitButtonState extends State<SubmitButton> {
   late final FormState _fromKey = (widget._fromKey.currentState as FormState);
+  bool _loading = false;
 
   void login() async {
     try {
+      setState(() {
+        _loading = true;
+      });
       final res = await HttpUtils().post(
         '/produce/login',
         data: {
@@ -74,6 +78,10 @@ class _SubmitButtonState extends State<SubmitButton> {
       goIndexPage();
     } catch (e) {
       //
+    } finally {
+      setState(() {
+        _loading = false;
+      });
     }
   }
 
@@ -81,7 +89,6 @@ class _SubmitButtonState extends State<SubmitButton> {
     GoRouter.of(context).go('/index');
   }
 
-  final bool _loading = false;
   void _onSubmitLoginForm() async {
     if (_fromKey.validate()) {
       setState(() {
@@ -102,7 +109,7 @@ class _SubmitButtonState extends State<SubmitButton> {
           padding: const EdgeInsets.symmetric(
             vertical: 16,
           )),
-      child: _loading
+      child: !_loading
           ? const Text('登录')
           : const SizedBox(
               width: 16,

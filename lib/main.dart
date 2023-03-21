@@ -7,11 +7,15 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:sp_util/sp_util.dart';
 import 'router/index.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() async {
   ///WidgetFlutterBinding 用于与Flutter引擎进行交互
   ///异步完成 - 必须调用 ensureInitialized(), 以确保具有 WidgetsBinding 的实例
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+
+  // 绘制开屏页面
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   //初始化本地存储
   await SpUtil.getInstance();
@@ -31,6 +35,8 @@ void main() async {
     );
     SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
   }
+
+  // FlutterNativeSplash.remove();
 }
 
 class MyApp extends StatelessWidget {

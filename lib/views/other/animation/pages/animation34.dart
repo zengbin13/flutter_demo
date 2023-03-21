@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:rive/rive.dart';
+// import 'package:rive/rive.dart';
 
 class AnimationPage34 extends StatefulWidget {
   const AnimationPage34({Key? key}) : super(key: key);
@@ -50,12 +50,12 @@ class _AnimationPage34State extends State<AnimationPage34> {
                   height: 2,
                 ),
               ),
-              Expanded(
-                flex: 1,
-                child: Center(
-                  child: RiveAnimation.asset('assets/rive/writing-girl.riv'),
-                ),
-              ),
+              // Expanded(
+              //   flex: 1,
+              //   child: Center(
+              //     child: RiveAnimation.asset('assets/rive/writing-girl.riv'),
+              //   ),
+              // ),
             ],
           ),
         ),

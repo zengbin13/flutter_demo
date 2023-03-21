@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/views/index.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'widget/root_page_view.dart';
 
 class RootPage extends StatefulWidget {
@@ -10,6 +11,16 @@ class RootPage extends StatefulWidget {
 }
 
 class _RootPageState extends State<RootPage> {
+  @override
+  void initState() {
+    super.initState();
+    initialization();
+  }
+
+  void initialization() async {
+    FlutterNativeSplash.remove();
+  }
+
   @override
   Widget build(BuildContext context) {
     return RootPageView(
