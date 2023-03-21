@@ -7,44 +7,61 @@ class AnimationPage25 extends StatefulWidget {
   State<AnimationPage25> createState() => _AnimationPage25State();
 }
 
-class _AnimationPage25State extends State<AnimationPage25> {
-  double _height = 200;
-  double _opacity = 1;
+class _AnimationPage25State extends State<AnimationPage25>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    _controller = AnimationController(
+      duration: const Duration(seconds: 5),
+      lowerBound: 0.3,
+      vsync: this,
+    );
+    _controller.repeat(reverse: true);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('隐式动画 - 动画控件及曲线Curves'),
+        title: const Text('显式自定义动画 - AnimatedBuilder'),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _height = _opacity == 0 ? 200 : 0;
-            _opacity = _opacity == 0 ? 1 : 0;
-          });
-        },
+        onPressed: () {},
         child: const Icon(Icons.add),
       ),
       body: Center(
-        child: AnimatedPadding(
-          duration: const Duration(seconds: 2),
-          padding: EdgeInsets.only(bottom: _height),
-          curve: Curves.bounceOut,
-          child: AnimatedOpacity(
-            //动画曲线默认值 Curves.linear
-            curve: Curves.ease,
-            duration: const Duration(seconds: 3),
-            opacity: _opacity,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.purple[100],
-                borderRadius: BorderRadius.circular(10),
+        child: AnimatedBuilder(
+          animation: _controller,
+          builder: (BuildContext context, Widget? child) {
+            return Opacity(
+              // 驱动方式1: 取动画控制器的值取值范围为 lowerBound upperBound
+              opacity: _controller.value,
+              child: Container(
+                color: Colors.purple[300],
+                alignment: Alignment.center,
+                // 驱动方式2: 使用Tween.evaluate对动画取值
+                width: Tween(begin: 100.0, end: 200.0)
+                    .chain(CurveTween(curve: Curves.easeIn))
+                    .evaluate(_controller),
+                height: Tween(begin: 100.0, end: 200.0)
+                    .chain(CurveTween(curve: Curves.easeOut))
+                    .evaluate(_controller),
+                child: child,
               ),
-              width: 300,
-              height: 300,
-              alignment: Alignment.center,
-              child: const Text('动画控件及曲线Curves'),
-            ),
+            );
+          },
+          child: const Text(
+            'hi',
+            style: TextStyle(fontSize: 32),
           ),
         ),
       ),

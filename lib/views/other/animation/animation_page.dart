@@ -80,29 +80,57 @@ class _AnimationPageState extends State<AnimationPage> {
             GestureDetector(
               onTap: () => context.push('/other/animation/2-3'),
               child: const Chip(
-                avatar: CircleAvatar(child: Text('控')),
-                label: Text('隐式动画 - 动画控件及曲线Curves'),
+                avatar: CircleAvatar(child: Text('补')),
+                label: Text('控制器串联补间(Tween)和曲线'),
               ),
             ),
             GestureDetector(
               onTap: () => context.push('/other/animation/2-4'),
               child: const Chip(
-                avatar: CircleAvatar(child: Text('补')),
-                label: Text('万能的补间动画 - TweenAminationBuilder'),
+                avatar: CircleAvatar(child: Text('交')),
+                label: Text('交错动画'),
               ),
             ),
             GestureDetector(
               onTap: () => context.push('/other/animation/2-5'),
               child: const Chip(
-                avatar: CircleAvatar(child: Text('计')),
-                label: Text('翻滚吧！计数器！上'),
+                avatar: CircleAvatar(child: Text('显')),
+                label: Text('显式自定义动画 - AnimatedBuilder'),
               ),
             ),
             GestureDetector(
               onTap: () => context.push('/other/animation/2-6'),
               child: const Chip(
-                avatar: CircleAvatar(child: Text('计')),
-                label: Text('翻滚吧！计数器！下'),
+                avatar: CircleAvatar(child: Text('显')),
+                label: Text('478呼吸法 - AnimatedBuilder'),
+              ),
+            ),
+            GestureDetector(
+              onTap: () => context.push('/other/animation/2-7'),
+              child: const Chip(
+                avatar: CircleAvatar(child: Text('显')),
+                label: Text('多个动画控制器 - TickerProviderStateMixin'),
+              ),
+            ),
+            GestureDetector(
+              onTap: () => context.push('/other/animation/3-2'),
+              child: const Chip(
+                avatar: CircleAvatar(child: Text('H')),
+                label: Text('主动画 - Hero'),
+              ),
+            ),
+            GestureDetector(
+              onTap: () => context.push('/other/animation/3-3'),
+              child: const Chip(
+                avatar: CircleAvatar(child: Text('P')),
+                label: Text('操作底层 - CustomPainter'),
+              ),
+            ),
+            GestureDetector(
+              onTap: () => context.push('/other/animation/3-4'),
+              child: const Chip(
+                avatar: CircleAvatar(child: Text('嵌')),
+                label: Text('嵌入式 - Rive/Flare/lottie'),
               ),
             ),
           ],

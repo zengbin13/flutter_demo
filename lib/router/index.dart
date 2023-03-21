@@ -149,6 +149,26 @@ class RouterUtil {
                 pageBuilder: (context, state) =>
                     const CupertinoPage(child: AnimationPage26()),
               ),
+              GoRoute(
+                path: '2-7',
+                pageBuilder: (context, state) =>
+                    const CupertinoPage(child: AnimationPage27()),
+              ),
+              GoRoute(
+                path: '3-2',
+                pageBuilder: (context, state) =>
+                    const CupertinoPage(child: AnimationPage32()),
+              ),
+              GoRoute(
+                path: '3-3',
+                pageBuilder: (context, state) =>
+                    const CupertinoPage(child: AnimationPage33()),
+              ),
+              GoRoute(
+                path: '3-4',
+                pageBuilder: (context, state) =>
+                    const CupertinoPage(child: AnimationPage34()),
+              ),
             ],
           ),
         ],

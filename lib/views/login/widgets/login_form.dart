@@ -71,11 +71,13 @@ class _SubmitButtonState extends State<SubmitButton> {
       );
       if (res == null) return;
       SpUtil.putString('token', res.data['token']);
-      goHome();
-    } catch (e) {}
+      goIndexPage();
+    } catch (e) {
+      //
+    }
   }
 
-  void goHome() {
+  void goIndexPage() {
     GoRouter.of(context).go('/index');
   }
 
@@ -100,7 +102,7 @@ class _SubmitButtonState extends State<SubmitButton> {
           padding: const EdgeInsets.symmetric(
             vertical: 16,
           )),
-      child: !_loading
+      child: _loading
           ? const Text('登录')
           : const SizedBox(
               width: 16,

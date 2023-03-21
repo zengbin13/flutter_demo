@@ -15,3 +15,7 @@ export 'other/animation/pages/animation23.dart';
 export 'other/animation/pages/animation24.dart';
 export 'other/animation/pages/animation25.dart';
 export 'other/animation/pages/animation26.dart';
+export 'other/animation/pages/animation27.dart';
+export 'other/animation/pages/animation32.dart';
+export 'other/animation/pages/animation33.dart';
+export 'other/animation/pages/animation34.dart';

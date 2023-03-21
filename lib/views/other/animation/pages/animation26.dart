@@ -7,45 +7,69 @@ class AnimationPage26 extends StatefulWidget {
   State<AnimationPage26> createState() => _AnimationPage26State();
 }
 
-class _AnimationPage26State extends State<AnimationPage26> {
-  double _height = 200;
-  double _opacity = 1;
+class _AnimationPage26State extends State<AnimationPage26>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+
+  @override
+  void initState() {
+    _controller = AnimationController(
+      duration: const Duration(seconds: 20),
+      vsync: this,
+    );
+    _controller.repeat(reverse: true);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
+    // 方式1
+    final Animation animation1 = Tween(begin: 0.0, end: 1.0)
+        .chain(CurveTween(curve: const Interval(0, 0.2)))
+        .animate(_controller);
+    final Animation animation3 = Tween(begin: 1.0, end: 0.0)
+        .chain(CurveTween(curve: const Interval(0.4, 0.95)))
+        .animate(_controller);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('隐式动画 - 动画控件及曲线Curves'),
+        title: const Text('478呼吸法 - AnimatedBuilder'),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          setState(() {
-            _height = _opacity == 0 ? 200 : 0;
-            _opacity = _opacity == 0 ? 1 : 0;
-          });
+        onPressed: () async {
+          // 方式2
+          // _controller.duration = const Duration(seconds: 4);
+          // _controller.forward();
+          // await Future.delayed(const Duration(seconds: 7));
+          // _controller.duration = const Duration(seconds: 8);
+          // _controller.reverse();
         },
         child: const Icon(Icons.add),
       ),
       body: Center(
-        child: AnimatedPadding(
-          duration: const Duration(seconds: 2),
-          padding: EdgeInsets.only(bottom: _height),
-          curve: Curves.bounceOut,
-          child: AnimatedOpacity(
-            //动画曲线默认值 Curves.linear
-            curve: Curves.ease,
-            duration: const Duration(seconds: 3),
-            opacity: _opacity,
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.purple[100],
-                borderRadius: BorderRadius.circular(10),
-              ),
-              width: 300,
-              height: 300,
+        child: AnimatedBuilder(
+          animation: _controller,
+          builder: (BuildContext context, Widget? child) {
+            return Container(
               alignment: Alignment.center,
-              child: const Text('动画控件及曲线Curves'),
-            ),
-          ),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                gradient: RadialGradient(
+                  colors: [Colors.blue[600]!, Colors.blue[100]!],
+                  stops: _controller.value <= 0.2
+                      ? [animation1.value, animation1.value + 0.1]
+                      : [animation3.value, animation3.value + 0.1],
+                ),
+              ),
+              width: 200,
+              height: 200,
+            );
+          },
         ),
       ),
     );

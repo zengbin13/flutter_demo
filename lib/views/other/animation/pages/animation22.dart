@@ -16,13 +16,14 @@ class _AnimationPage22State extends State<AnimationPage22>
   @override
   void initState() {
     _controller = AnimationController(
-      duration: const Duration(seconds: 2),
-      lowerBound: 0.2, //下限值
-      upperBound: 1, //上限值
+      duration: const Duration(seconds: 5),
+      lowerBound: 0.5, //下限值
+      upperBound: 1.5, //上限值
       /**
        * 垂直同步
        * 屏幕什么时间需要显示新的一帧 如60帧 16ms渲染新的一帧
        * 由SingleTickerProviderStateMixin提供 
+       * 在initState中this才能取到
        */
       vsync: this,
     )..addListener(() {
