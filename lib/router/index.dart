@@ -4,6 +4,7 @@ import 'package:flutter_demo/utils/index.dart';
 import 'package:flutter_demo/views/index.dart';
 import 'package:flutter_demo/views/other/other_page.dart';
 import 'package:go_router/go_router.dart';
+import 'package:page_animation_transition/animations/bottom_to_top_faded_transition.dart';
 import 'package:sp_util/sp_util.dart';
 import 'package:page_animation_transition/animations/right_to_left_faded_transition.dart';
 
@@ -85,92 +86,166 @@ class RouterUtil {
             const CupertinoPage(child: OtherPage()),
         routes: [
           GoRoute(
+            path: 'scan',
+            pageBuilder: (BuildContext context, GoRouterState state) {
+              return CustomTransitionPage<void>(
+                child: const ScanPage(),
+                transitionsBuilder: BottomToTopFadedTransition().animate,
+              );
+            },
+          ),
+          GoRoute(
             path: 'animation',
             pageBuilder: (context, state) =>
                 const CupertinoPage(child: AnimationPage()),
             routes: [
               GoRoute(
                 path: '1-1',
-                pageBuilder: (context, state) =>
-                    const CupertinoPage(child: AnimationPage11()),
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: AnimationPage11(),
+                ),
               ),
               GoRoute(
                 path: '1-2',
-                pageBuilder: (context, state) =>
-                    const CupertinoPage(child: AnimationPage12()),
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: AnimationPage12(),
+                ),
               ),
               GoRoute(
                 path: '1-3',
-                pageBuilder: (context, state) =>
-                    const CupertinoPage(child: AnimationPage13()),
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: AnimationPage13(),
+                ),
               ),
               GoRoute(
                 path: '1-4',
-                pageBuilder: (context, state) =>
-                    const CupertinoPage(child: AnimationPage14()),
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: AnimationPage14(),
+                ),
               ),
               GoRoute(
                 path: '1-5',
-                pageBuilder: (context, state) =>
-                    const CupertinoPage(child: AnimationPage15()),
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: AnimationPage15(),
+                ),
               ),
               GoRoute(
                 path: '1-6',
-                pageBuilder: (context, state) =>
-                    const CupertinoPage(child: AnimationPage16()),
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: AnimationPage16(),
+                ),
               ),
               GoRoute(
                 path: '2-1',
-                pageBuilder: (context, state) =>
-                    const CupertinoPage(child: AnimationPage21()),
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: AnimationPage21(),
+                ),
               ),
               GoRoute(
                 path: '2-2',
-                pageBuilder: (context, state) =>
-                    const CupertinoPage(child: AnimationPage22()),
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: AnimationPage22(),
+                ),
               ),
               GoRoute(
                 path: '2-3',
-                pageBuilder: (context, state) =>
-                    const CupertinoPage(child: AnimationPage23()),
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: AnimationPage23(),
+                ),
               ),
               GoRoute(
                 path: '2-4',
-                pageBuilder: (context, state) =>
-                    const CupertinoPage(child: AnimationPage24()),
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: AnimationPage24(),
+                ),
               ),
               GoRoute(
                 path: '2-5',
-                pageBuilder: (context, state) =>
-                    const CupertinoPage(child: AnimationPage25()),
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: AnimationPage25(),
+                ),
               ),
               GoRoute(
                 path: '2-6',
-                pageBuilder: (context, state) =>
-                    const CupertinoPage(child: AnimationPage26()),
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: AnimationPage26(),
+                ),
               ),
               GoRoute(
                 path: '2-7',
-                pageBuilder: (context, state) =>
-                    const CupertinoPage(child: AnimationPage27()),
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: AnimationPage27(),
+                ),
               ),
               GoRoute(
                 path: '3-2',
-                pageBuilder: (context, state) =>
-                    const CupertinoPage(child: AnimationPage32()),
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: AnimationPage32(),
+                ),
               ),
               GoRoute(
                 path: '3-3',
-                pageBuilder: (context, state) =>
-                    const CupertinoPage(child: AnimationPage33()),
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: AnimationPage33(),
+                ),
               ),
               GoRoute(
                 path: '3-4',
-                pageBuilder: (context, state) =>
-                    const CupertinoPage(child: AnimationPage34()),
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: AnimationPage34(),
+                ),
               ),
             ],
           ),
+          GoRoute(
+              path: 'scrollable',
+              pageBuilder: (context, state) => const CupertinoPage(
+                    child: ScrollablePage(),
+                  ),
+              routes: [
+                GoRoute(
+                  path: '1-1',
+                  pageBuilder: (context, state) => const CupertinoPage(
+                    child: ScrollablePage11(),
+                  ),
+                ),
+                GoRoute(
+                  path: '1-2',
+                  pageBuilder: (context, state) => const CupertinoPage(
+                    child: ScrollablePage12(),
+                  ),
+                ),
+                GoRoute(
+                  path: '1-3',
+                  pageBuilder: (context, state) => const CupertinoPage(
+                    child: ScrollablePage13(),
+                  ),
+                ),
+                GoRoute(
+                  path: '1-4',
+                  pageBuilder: (context, state) => const CupertinoPage(
+                    child: ScrollablePage14(),
+                  ),
+                ),
+                GoRoute(
+                  path: '1-5',
+                  pageBuilder: (context, state) => const CupertinoPage(
+                    child: ScrollablePage15(),
+                  ),
+                ),
+                GoRoute(
+                  path: '1-6',
+                  pageBuilder: (context, state) => const CupertinoPage(
+                    child: ScrollablePage16(),
+                  ),
+                ),
+                GoRoute(
+                  path: '1-7',
+                  pageBuilder: (context, state) => const CupertinoPage(
+                    child: ScrollablePage17(),
+                  ),
+                ),
+              ])
         ],
       ),
     ],

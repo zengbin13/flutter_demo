@@ -1,6 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+export './pages/animation11.dart';
+export './pages/animation12.dart';
+export './pages/animation13.dart';
+export './pages/animation14.dart';
+export './pages/animation15.dart';
+export './pages/animation16.dart';
+export './pages/animation21.dart';
+export './pages/animation22.dart';
+export './pages/animation23.dart';
+export './pages/animation24.dart';
+export './pages/animation25.dart';
+export './pages/animation26.dart';
+export './pages/animation27.dart';
+export './pages/animation32.dart';
+export './pages/animation33.dart';
+export './pages/animation34.dart';
+
 class AnimationPage extends StatefulWidget {
   const AnimationPage({Key? key}) : super(key: key);
 

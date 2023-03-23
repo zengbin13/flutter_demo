@@ -54,12 +54,11 @@ dependencies:
   cherry_toast: ^1.1.0
   # 加载动画
   flutter_easyloading: ^3.0.5
-  # shared_preferences: ^2.0.18
   # 本地存储
   sp_util: ^2.0.3
+  # shared_preferences: ^2.0.18
+  # 实战组件库
   flukit: ^3.0.1
-  # mobile_scanner: ^3.0.0
-  # qr_code_scanner: ^1.0.1
   # 轮播图
   card_swiper: ^2.0.4
   flutter_page_indicator: ^0.0.3
@@ -67,6 +66,9 @@ dependencies:
   lottie: ^2.3.0
   # rive动画
   rive: ^0.10.3
+  # 扫码
+  mobile_scanner: ^3.1.1
+  # flutter_scankit: ^1.2.4
 
 dev_dependencies:
   flutter_test:
