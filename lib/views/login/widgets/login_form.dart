@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_demo/http/apis/index.dart';
-import 'package:flutter_demo/http/http_request.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sp_util/sp_util.dart';
 
@@ -85,7 +84,7 @@ class _SubmitButtonState extends State<SubmitButton>
       });
       if (res == null) return;
       SpUtil.putString('token', res.data['token']);
-      // goIndexPage();
+      goIndexPage();
     } catch (e) {
       //
     } finally {

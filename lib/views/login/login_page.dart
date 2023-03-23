@@ -30,7 +30,10 @@ class _LoginPageState extends State<LoginPage> {
         child: Center(
           child: ConstrainedBox(
             constraints: BoxConstraints(
-              maxHeight: MediaQuery.of(context).size.height,
+              maxHeight:
+                  MediaQuery.of(context).orientation == Orientation.portrait
+                      ? MediaQuery.of(context).size.height
+                      : MediaQuery.of(context).size.width,
               maxWidth: 500,
             ),
             child: Column(
