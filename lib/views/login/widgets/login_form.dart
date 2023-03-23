@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_demo/http/apis/index.dart';
 import 'package:flutter_demo/http/http_request.dart';
 import 'package:go_router/go_router.dart';
 import 'package:sp_util/sp_util.dart';
@@ -23,7 +24,7 @@ class _LoginFormState extends State<LoginForm> {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 30),
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            // crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               // 用户名输入框
               UsernameTextFormField(usernameController: _usernameController),
@@ -56,32 +57,42 @@ class SubmitButton extends StatefulWidget {
   State<SubmitButton> createState() => _SubmitButtonState();
 }
 
-class _SubmitButtonState extends State<SubmitButton> {
+class _SubmitButtonState extends State<SubmitButton>
+    with SingleTickerProviderStateMixin {
   late final FormState _fromKey = (widget._fromKey.currentState as FormState);
   bool _loading = false;
+
+  late AnimationController _container;
+
+  @override
+  void initState() {
+    _container = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 500),
+    );
+    super.initState();
+  }
 
   void login() async {
     try {
       setState(() {
         _loading = true;
       });
-      final res = await HttpUtils().post(
-        '/produce/login',
-        data: {
-          'phone': widget.usernameController.text,
-          'password': widget.passwordController.text
-        },
-        extra: ExtraOptions(loading: true),
-      );
+      _container.forward();
+      final res = await LoginApi.login({
+        'phone': widget.usernameController.text,
+        'password': widget.passwordController.text
+      });
       if (res == null) return;
       SpUtil.putString('token', res.data['token']);
-      goIndexPage();
+      // goIndexPage();
     } catch (e) {
       //
     } finally {
       setState(() {
         _loading = false;
       });
+      _container.reverse();
     }
   }
 
@@ -99,26 +110,45 @@ class _SubmitButtonState extends State<SubmitButton> {
 
   @override
   Widget build(BuildContext context) {
-    return FilledButton(
-      onPressed: _onSubmitLoginForm,
-      style: ElevatedButton.styleFrom(
-          textStyle: const TextStyle(
-            fontSize: 16.0,
-            letterSpacing: 8,
-          ),
-          padding: const EdgeInsets.symmetric(
-            vertical: 16,
-          )),
-      child: !_loading
-          ? const Text('登录')
-          : const SizedBox(
-              width: 16,
-              height: 16,
-              child: CircularProgressIndicator(
-                strokeWidth: 2,
-                color: Colors.white,
-              ),
-            ),
+    return Ink(
+      decoration: BoxDecoration(
+        color: Theme.of(context).primaryColor,
+        borderRadius: BorderRadius.circular(36),
+      ),
+      child: InkWell(
+        onTap: _onSubmitLoginForm,
+        borderRadius: BorderRadius.circular(36),
+        child: AnimatedBuilder(
+            animation: _container,
+            builder: (context, child) {
+              return Container(
+                width: Tween(begin: 500.0, end: 52.0)
+                    .chain(CurveTween(
+                      curve: Curves.easeIn,
+                    ))
+                    .evaluate(_container),
+                height: 52,
+                alignment: Alignment.center,
+                child: !_loading
+                    ? const Text(
+                        '登录',
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.white,
+                          letterSpacing: 8,
+                        ),
+                      )
+                    : const SizedBox(
+                        width: 24,
+                        height: 24,
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
+                          strokeWidth: 2.2,
+                        ),
+                      ),
+              );
+            }),
+      ),
     );
   }
 }
@@ -163,9 +193,16 @@ class _UsernameTextFormFieldState extends State<UsernameTextFormField> {
           prefixIcon: const Icon(Icons.person),
           filled: true,
           fillColor: Colors.white,
-          border: UnderlineInputBorder(
+          contentPadding: const EdgeInsets.all(2),
+          border: OutlineInputBorder(
+            borderSide: BorderSide.none,
             borderRadius: BorderRadius.circular(10),
           ),
+          // isCollapsed: true,
+          // border: InputBorder.none,
+          // border: UnderlineInputBorder(
+          //   borderRadius: BorderRadius.circular(10),
+          // ),
         ),
       ),
     );
@@ -228,7 +265,9 @@ class _PasswordTextFormFieldState extends State<PasswordTextFormField> {
           ),
           filled: true,
           fillColor: Colors.white,
-          border: UnderlineInputBorder(
+          contentPadding: const EdgeInsets.all(2),
+          border: OutlineInputBorder(
+            borderSide: BorderSide.none,
             borderRadius: BorderRadius.circular(10),
           ),
         ),

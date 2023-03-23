@@ -15,7 +15,6 @@ class HttpInterceptor extends Interceptor {
     print(
         'RESPONSE[${response.statusCode}] => PATH: ${response.requestOptions.path}');
     ApiResponse apiResponse = response.data as ApiResponse;
-    print(apiResponse.data.runtimeType);
     if (apiResponse.errorCode == ApiCode.notLogin) {
       print('登录页面');
     }
