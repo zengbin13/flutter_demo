@@ -95,6 +95,12 @@ class RouterUtil {
             },
           ),
           GoRoute(
+            path: 'refresh',
+            pageBuilder: (context, state) => const CupertinoPage(
+              child: RefreshPage(),
+            ),
+          ),
+          GoRoute(
             path: 'animation',
             pageBuilder: (context, state) =>
                 const CupertinoPage(child: AnimationPage()),
@@ -198,54 +204,105 @@ class RouterUtil {
             ],
           ),
           GoRoute(
-              path: 'scrollable',
-              pageBuilder: (context, state) => const CupertinoPage(
-                    child: ScrollablePage(),
-                  ),
-              routes: [
-                GoRoute(
-                  path: '1-1',
-                  pageBuilder: (context, state) => const CupertinoPage(
-                    child: ScrollablePage11(),
-                  ),
+            path: 'scrollable',
+            pageBuilder: (context, state) => const CupertinoPage(
+              child: ScrollablePage(),
+            ),
+            routes: [
+              GoRoute(
+                path: '1-1',
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: ScrollablePage11(),
                 ),
-                GoRoute(
-                  path: '1-2',
-                  pageBuilder: (context, state) => const CupertinoPage(
-                    child: ScrollablePage12(),
-                  ),
+              ),
+              GoRoute(
+                path: '1-2',
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: ScrollablePage12(),
                 ),
-                GoRoute(
-                  path: '1-3',
-                  pageBuilder: (context, state) => const CupertinoPage(
-                    child: ScrollablePage13(),
-                  ),
+              ),
+              GoRoute(
+                path: '1-3',
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: ScrollablePage13(),
                 ),
-                GoRoute(
-                  path: '1-4',
-                  pageBuilder: (context, state) => const CupertinoPage(
-                    child: ScrollablePage14(),
-                  ),
+              ),
+              GoRoute(
+                path: '1-4',
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: ScrollablePage14(),
                 ),
-                GoRoute(
-                  path: '1-5',
-                  pageBuilder: (context, state) => const CupertinoPage(
-                    child: ScrollablePage15(),
-                  ),
+              ),
+              GoRoute(
+                path: '1-5',
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: ScrollablePage15(),
                 ),
-                GoRoute(
-                  path: '1-6',
-                  pageBuilder: (context, state) => const CupertinoPage(
-                    child: ScrollablePage16(),
-                  ),
+              ),
+              GoRoute(
+                path: '1-6',
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: ScrollablePage16(),
                 ),
-                GoRoute(
-                  path: '1-7',
-                  pageBuilder: (context, state) => const CupertinoPage(
-                    child: ScrollablePage17(),
-                  ),
+              ),
+              GoRoute(
+                path: '1-7',
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: ScrollablePage17(),
                 ),
-              ])
+              ),
+            ],
+          ),
+          GoRoute(
+            path: 'sliver',
+            pageBuilder: (context, state) => const CupertinoPage(
+              child: SliverPage(),
+            ),
+            routes: [
+              GoRoute(
+                path: '1-1',
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: SliverPage11(),
+                ),
+              ),
+              GoRoute(
+                path: '1-2',
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: SliverPage12(),
+                ),
+              ),
+              GoRoute(
+                path: '1-3',
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: SliverPage13(),
+                ),
+              ),
+              GoRoute(
+                path: '1-4',
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: SliverPage14(),
+                ),
+              ),
+              GoRoute(
+                path: '1-5',
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: SliverPage15(),
+                ),
+              ),
+              GoRoute(
+                path: '1-6',
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: SliverPage16(),
+                ),
+              ),
+              GoRoute(
+                path: '1-7',
+                pageBuilder: (context, state) => const CupertinoPage(
+                  child: SliverPage17(),
+                ),
+              ),
+            ],
+          )
         ],
       ),
     ],

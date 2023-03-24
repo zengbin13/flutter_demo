@@ -21,16 +21,6 @@ class _OtherPageState extends State<OtherPage> {
           child: Column(
         children: [
           DiscoverCell(
-            title: '扫码',
-            prefix: Icon(
-              Icons.qr_code_scanner,
-              color: Theme.of(context).primaryColor,
-            ),
-            onTap: () {
-              context.push('/other/scan');
-            },
-          ),
-          DiscoverCell(
             title: '动画',
             prefix: Icon(
               Icons.animation_outlined,
@@ -48,6 +38,36 @@ class _OtherPageState extends State<OtherPage> {
             ),
             onTap: () {
               context.push('/other/scrollable');
+            },
+          ),
+          DiscoverCell(
+            title: 'Sliver',
+            prefix: Icon(
+              Icons.format_list_numbered_rtl_outlined,
+              color: Theme.of(context).primaryColor,
+            ),
+            onTap: () {
+              context.push('/other/sliver');
+            },
+          ),
+          DiscoverCell(
+            title: '扫码',
+            prefix: Icon(
+              Icons.qr_code_scanner,
+              color: Theme.of(context).primaryColor,
+            ),
+            onTap: () {
+              context.push('/other/scan');
+            },
+          ),
+          DiscoverCell(
+            title: '下拉刷新',
+            prefix: Icon(
+              Icons.refresh_rounded,
+              color: Theme.of(context).primaryColor,
+            ),
+            onTap: () {
+              context.push('/other/refresh');
             },
           ),
         ],
