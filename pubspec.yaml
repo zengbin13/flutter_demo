@@ -51,6 +51,7 @@ dependencies:
   # 路由切换动画
   page_animation_transition: ^0.0.9
   # json序列化
+  freezed_annotation: ^2.2.0
   json_annotation: ^4.5.0
   # toast弹窗
   cherry_toast: ^1.1.0
@@ -75,6 +76,8 @@ dependencies:
   pull_to_refresh: ^2.0.0
   # 图片选择
   wechat_assets_picker: ^8.4.1
+  # 可见性检测
+  visibility_detector: ^0.4.0+2
 
 dev_dependencies:
   flutter_test:
@@ -86,8 +89,10 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+  # json序列化
+  build_runner: ^2.3.3
   json_serializable: ^6.2.0
-  build_runner: ^2.1.11
+  freezed: ^2.3.2
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:dio/dio.dart';
 import 'package:encrypt/encrypt.dart';
+import 'package:flutter_demo/http/model/http.dart';
 import '../model/index.dart';
 
 class CryptoInterceptor extends Interceptor {

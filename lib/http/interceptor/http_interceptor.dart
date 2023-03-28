@@ -1,21 +1,26 @@
+import 'dart:developer';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_demo/http/model/index.dart';
 import 'package:flutter_demo/utils/toast.dart';
+import 'package:sp_util/sp_util.dart';
 import '../http_exception.dart';
+import '../model/http.dart';
 
 class HttpInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    print('REQUEST[${options.method}] => PATH: ${options.path}');
+    log('REQUEST[${options.method}] => PATH: ${options.path}');
+    if (options.extra["auth"]) {
+      options.headers['token'] = SpUtil.getString('token');
+    }
     super.onRequest(options, handler);
   }
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    print(
-        'RESPONSE[${response.statusCode}] => PATH: ${response.requestOptions.path}');
+    log('RESPONSE[${response.statusCode}] => PATH: ${response.requestOptions.path}');
     ApiResponse apiResponse = response.data as ApiResponse;
+
     if (apiResponse.errorCode == ApiCode.notLogin) {
       print('登录页面');
     }
