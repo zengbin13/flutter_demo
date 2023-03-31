@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/http/apis/index.dart';
 import 'package:flutter_demo/model/produce/produce_index_data/produce_index_data.dart';
+import 'package:flutter_demo/widgets/z-card.dart';
 import 'package:visibility_detector/visibility_detector.dart';
+
+import 'widgets/produce_board.dart';
+import 'widgets/produce_livestock.dart';
+import 'widgets/produce_wait.dart';
 
 class ProducePage extends StatefulWidget {
   const ProducePage({Key? key}) : super(key: key);
@@ -34,8 +39,22 @@ class _ProducePageState extends State<ProducePage> {
           title: const Text('生产管理'),
         ),
         body: produceData == null
-            ? const Center(child: Text('请求失败'))
-            : const Center(child: Text('ProducePage')),
+            ? const Center()
+            : ListView(
+                children: [
+                  Column(
+                    children: [
+                      ProduceLivestock(
+                        produceData: produceData!,
+                      ),
+                      const ProduceBoard(),
+                      ProduceWait(
+                        produceData: produceData!,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
       ),
     );
   }

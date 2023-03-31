@@ -43,6 +43,7 @@ class HttpUtils {
     options ??= Options();
     options.extra = extra.toJson();
     try {
+      print('$data');
       Response<ApiResponse> response = await _dio.post(
         path,
         data: data,

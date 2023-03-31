@@ -9,7 +9,7 @@ import '../model/http.dart';
 class HttpInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    log('REQUEST[${options.method}] => PATH: ${options.path}');
+    log('REQUEST[${options.method}] => PATH: ${options.path} => params: ${options.data}');
     if (options.extra["auth"]) {
       options.headers['token'] = SpUtil.getString('token');
     }

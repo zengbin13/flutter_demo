@@ -78,6 +78,8 @@ dependencies:
   wechat_assets_picker: ^8.4.1
   # 可见性检测
   visibility_detector: ^0.4.0+2
+  # 日期格式化
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:

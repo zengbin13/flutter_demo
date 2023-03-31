@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:encrypt/encrypt.dart';
 import 'package:flutter_demo/http/model/http.dart';
@@ -8,6 +9,7 @@ class CryptoInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
     // 加密数据
+    log('请求参数 ${options.data}');
     options.data = {'params': AesUtil().encrypt(jsonEncode(options.data))};
     super.onRequest(options, handler);
   }
