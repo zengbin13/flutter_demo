@@ -1,20 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_demo/http/interceptor/loading_interceptor.dart';
+import 'package:flutter_demo/http/model/http.dart';
 import 'package:flutter_demo/http/model/index.dart';
 import 'interceptor/crypto_interceptor.dart';
 import 'http_config.dart';
 import 'interceptor/http_interceptor.dart';
-
-class ExtraOptions {
-  ExtraOptions({
-    this.loading = true,
-  });
-  final bool loading;
-
-  Map<String, dynamic> toJson() => {
-        "loading": loading,
-      };
-}
 
 class HttpUtils {
   // factory工厂构造函数  并不总是创建这个类的一个新实例, 可从缓存中返回一个实例
@@ -41,22 +32,24 @@ class HttpUtils {
   }
 
   ///  post 操作
-  Future<ApiResponse?> post(
+  Future<ApiResponse> post(
     String path, {
     Map<String, dynamic>? data,
     Options? options,
     ExtraOptions? extra,
   }) async {
+    // ??= if为null进行赋值
     extra ??= ExtraOptions();
     options ??= Options();
     options.extra = extra.toJson();
     try {
-      Response response = await _dio.post(
+      print('$data');
+      Response<ApiResponse> response = await _dio.post(
         path,
         data: data,
         options: options,
       );
-      return response.data;
+      return response.data!;
     } on DioError catch (e) {
       print('异常捕获: $e');
       rethrow;

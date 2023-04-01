@@ -1,9 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.flutter_demo">
+    <!-- 启动图标 -->
    <application
         android:label="flutter_demo"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -40,5 +41,9 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!--//获取当前WiFi接入的状态以及WLAN热点的信息-->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
+    <!--请求图片和视频权限-->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO" />
+    <!--如果不需要获取音频，移除或者注释 READ_MEDIA_AUDIO-->
+    <!--<uses-permission android:name="android.permission.READ_MEDIA_AUDIO" />-->
 </manifest>

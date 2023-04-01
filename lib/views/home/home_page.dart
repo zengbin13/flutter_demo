@@ -25,10 +25,13 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Container(
           color: const Color.fromRGBO(246, 245, 245, 1),
-          width: double.infinity,
           padding: EdgeInsets.all(10.w),
           child: Column(
-            children: const [HomeSwiper(), SizedBox(height: 20), HomeWrap()],
+            children: const [
+              HomeSwiper(),
+              SizedBox(height: 20),
+              HomeWrap(),
+            ],
           )),
     );
   }
@@ -43,25 +46,25 @@ class HomeWrap extends StatelessWidget {
     {
       "name": '生产管理',
       "img": 'assets/images/index/type1.png',
-      "path": '/pages/produce/index',
+      "path": '/produce',
       "active": true
     },
     {
       "name": '销售管理',
       "img": 'assets/images/index/type2.png',
-      "path": '/pages/sales/index',
+      "path": '/sale',
       "active": true
     },
     {
       "name": '饲料厂',
       "img": 'assets/images/index/type3.png',
-      "path": '/pages/index/index',
+      "path": '/feed',
       "active": false,
     },
     {
       "name": '物资管理',
       "img": 'assets/images/index/type4.png',
-      "path": '/pages/index/index',
+      "path": '/goods',
       "active": false,
     },
   ];
@@ -78,34 +81,42 @@ class HomeWrap extends StatelessWidget {
         runSpacing: 2.w,
         alignment: WrapAlignment.spaceBetween,
         children: list.map((item) {
-          return GestureDetector(
-            onTap: () {
-              if (!item["active"]) {
-                ToastUtil.info('暂未开放');
-              }
-            },
-            child: Container(
-              width: 169.w,
-              color: Colors.white,
-              padding: const EdgeInsets.symmetric(vertical: 6),
-              child: Column(
-                children: [
-                  Image.asset(
-                    item['img'] as String,
-                    height: 65.w,
-                  ),
-                  Text(
-                    item['name'] as String,
-                    style: const TextStyle(
-                      fontSize: 15,
-                      height: 2,
-                    ),
-                  ),
-                ],
+          return createWrapItem(item, context);
+        }).toList(),
+      ),
+    );
+  }
+
+  GestureDetector createWrapItem(
+    Map<String, dynamic> item,
+    BuildContext context,
+  ) {
+    return GestureDetector(
+      onTap: () {
+        if (!item["active"]) {
+          ToastUtil.info('暂未开放');
+        }
+        context.push(item['path']);
+      },
+      child: Container(
+        width: 169.w,
+        color: Colors.white,
+        padding: const EdgeInsets.symmetric(vertical: 6),
+        child: Column(
+          children: [
+            Image.asset(
+              item['img'] as String,
+              height: 65.w,
+            ),
+            Text(
+              item['name'] as String,
+              style: const TextStyle(
+                fontSize: 15,
+                height: 2,
               ),
             ),
-          );
-        }).toList(),
+          ],
+        ),
       ),
     );
   }

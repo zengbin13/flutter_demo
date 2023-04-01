@@ -81,9 +81,16 @@ class RouterUtil {
         },
       ),
       GoRoute(
+        path: '/produce',
+        pageBuilder: (context, state) => const CupertinoPage(
+          child: ProducePage(),
+        ),
+      ),
+      GoRoute(
         path: '/other',
-        pageBuilder: (context, state) =>
-            const CupertinoPage(child: OtherPage()),
+        pageBuilder: (context, state) => const CupertinoPage(
+          child: OtherPage(),
+        ),
         routes: [
           GoRoute(
             path: 'scan',
