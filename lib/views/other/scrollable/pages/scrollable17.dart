@@ -48,7 +48,7 @@ class _ScrollablePage17State extends State<ScrollablePage17> {
                         ),
                       )),
               onReorder: (int oldIndex, int newIndex) {
-                print('$oldIndex $newIndex');
+                // print('$oldIndex $newIndex');
               },
             ),
             SingleChildScrollView(

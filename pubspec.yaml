@@ -70,12 +70,12 @@ dependencies:
   # rive动画
   rive: ^0.10.3
   # 扫码
-  mobile_scanner: ^3.1.1
+  # mobile_scanner: ^3.1.1
   # flutter_scankit: ^1.2.4
   # 下拉刷新
   pull_to_refresh: ^2.0.0
   # 图片选择
-  wechat_assets_picker: ^8.4.1
+  # wechat_assets_picker: ^8.4.1
   # 可见性检测
   visibility_detector: ^0.4.0+2
   # 日期格式化

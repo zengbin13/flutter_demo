@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_demo/http/apis/index.dart';
 import 'package:flutter_demo/model/produce/produce_board/produce_board.dart';
 import 'package:flutter_demo/utils/date_time.dart';
-import 'package:flutter_demo/widgets/z-card.dart';
+import 'package:flutter_demo/widgets/z_card.dart';
 
 class ProduceBoard extends StatefulWidget {
   const ProduceBoard({super.key});
@@ -31,7 +31,6 @@ class _ProduceBoardState extends State<ProduceBoard> {
       data["end_time"] = range[1];
     }
     ProduceBoardModel res = await ProduceApi.getProduceBoard(data: data);
-    print(res.produceList.saleNumList.toJson());
     setState(() {
       _produceList = res.produceList;
     });

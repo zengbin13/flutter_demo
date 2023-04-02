@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/http/apis/index.dart';
 import 'package:flutter_demo/model/produce/produce_index_data/produce_index_data.dart';
-import 'package:flutter_demo/widgets/z-card.dart';
+import 'package:flutter_demo/widgets/z_card.dart';
 import 'package:visibility_detector/visibility_detector.dart';
 
 import 'widgets/produce_board.dart';
