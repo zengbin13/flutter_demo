@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/http/apis/index.dart';
-import 'package:flutter_demo/model/produce/produce_board/produce_board.dart';
+import 'package:flutter_demo/model/produce/produce_board/produce_board_model.dart';
 import 'package:flutter_demo/utils/date_time.dart';
 import 'package:flutter_demo/widgets/z_card.dart';
 

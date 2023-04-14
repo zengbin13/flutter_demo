@@ -46,7 +46,7 @@ class RouterUtil {
                         .chain(CurveTween(curve: Curves.ease))
                         .animate(animation),
                 child: FadeTransition(
-                  opacity: Tween<double>(begin: 0.1, end: 1)
+                  opacity: Tween<double>(begin: 1, end: 1)
                       .chain(CurveTween(curve: Curves.easeOut))
                       .animate(animation),
                   child: child,
@@ -85,6 +85,14 @@ class RouterUtil {
         pageBuilder: (context, state) => const CupertinoPage(
           child: ProducePage(),
         ),
+        routes: [
+          GoRoute(
+            path: 'archives',
+            pageBuilder: (context, state) => const CupertinoPage(
+              child: ArchivesPage(),
+            ),
+          ),
+        ],
       ),
       GoRoute(
         path: '/other',

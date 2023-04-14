@@ -8,3 +8,4 @@ export 'other/sliver/sliver_page.dart';
 export 'other/scan/scan_page.dart';
 export 'other/refresh/refresh_page.dart';
 export 'produce/index/index.dart';
+export 'produce/archives/index.dart';

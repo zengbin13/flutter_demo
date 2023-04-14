@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_demo/http/apis/index.dart';
+import 'package:flutter_demo/provider/user_model.dart';
 import 'package:go_router/go_router.dart';
+import 'package:provider/provider.dart';
 import 'package:sp_util/sp_util.dart';
 
 class LoginForm extends StatefulWidget {
@@ -56,42 +58,34 @@ class SubmitButton extends StatefulWidget {
   State<SubmitButton> createState() => _SubmitButtonState();
 }
 
-class _SubmitButtonState extends State<SubmitButton>
-    with SingleTickerProviderStateMixin {
+class _SubmitButtonState extends State<SubmitButton> {
   late final FormState _fromKey = (widget._fromKey.currentState as FormState);
   bool _loading = false;
 
-  late AnimationController _container;
-
-  @override
-  void initState() {
-    _container = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 500),
-    );
-    super.initState();
-  }
-
-  void login() async {
+  void login() {
     try {
+      if (_loading) return;
       setState(() {
         _loading = true;
       });
-      _container.forward();
-      final res = await LoginApi.login({
-        'phone': widget.usernameController.text,
-        'password': widget.passwordController.text
-      });
-      if (res == null) return;
-      SpUtil.putString('token', res.data['token']);
-      goIndexPage();
+      // await Future.delayed(const Duration(milliseconds: 800));
+      Provider.of<UserModel>(context).login(
+        phone: widget.usernameController.text,
+        password: widget.passwordController.text,
+      );
+      // final res = await LoginApi.login({
+      //   'phone': widget.usernameController.text,
+      //   'password': widget.passwordController.text
+      // });
+      // if (res == null) return;
+      // SpUtil.putString('token', res.data['token']);
+      // goIndexPage();
     } catch (e) {
       //
     } finally {
       setState(() {
         _loading = false;
       });
-      _container.reverse();
     }
   }
 
@@ -101,52 +95,47 @@ class _SubmitButtonState extends State<SubmitButton>
 
   void _onSubmitLoginForm() async {
     if (_fromKey.validate()) {
-      setState(() {
-        login();
-      });
+      login();
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Ink(
-      decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor,
-        borderRadius: BorderRadius.circular(36),
-      ),
-      child: InkWell(
-        onTap: _onSubmitLoginForm,
-        borderRadius: BorderRadius.circular(36),
-        child: AnimatedBuilder(
-            animation: _container,
-            builder: (context, child) {
-              return Container(
-                width: Tween(begin: 500.0, end: 52.0)
-                    .chain(CurveTween(
-                      curve: Curves.easeIn,
-                    ))
-                    .evaluate(_container),
-                height: 52,
-                alignment: Alignment.center,
-                child: !_loading
-                    ? const Text(
-                        '登录',
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.white,
-                          letterSpacing: 8,
-                        ),
-                      )
-                    : const SizedBox(
-                        width: 24,
-                        height: 24,
-                        child: CircularProgressIndicator(
-                          color: Colors.white,
-                          strokeWidth: 2.2,
-                        ),
-                      ),
-              );
-            }),
+    return AnimatedContainer(
+      width: !_loading ? 400 : 52,
+      height: 52,
+      duration: const Duration(milliseconds: 500),
+      child: ElevatedButton(
+        onPressed: _onSubmitLoginForm,
+        style: ButtonStyle(
+          // 用于在不同状态下指定小部件的属性值。例如按下、禁用或悬停等
+          shape: MaterialStateProperty.all(
+            const StadiumBorder(),
+          ),
+          backgroundColor: MaterialStateProperty.all(
+            Theme.of(context).primaryColor,
+          ),
+        ),
+        child: AnimatedSwitcher(
+          duration: const Duration(milliseconds: 500),
+          child: !_loading
+              ? const Text(
+                  '登录',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: Colors.white,
+                    letterSpacing: 8,
+                  ),
+                )
+              : const SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
+                    strokeWidth: 2.2,
+                  ),
+                ),
+        ),
       ),
     );
   }

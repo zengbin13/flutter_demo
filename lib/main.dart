@@ -20,12 +20,14 @@ void main() async {
   //初始化本地存储
   await SpUtil.getInstance();
 
-  runApp(MultiProvider(
-    providers: [
-      ChangeNotifierProvider<UserModel>(create: (_) => UserModel()),
-    ],
-    child: const MyApp(),
-  ));
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider<UserModel>(create: (_) => UserModel()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 
   // 透明状态栏
   if (Platform.isAndroid) {
@@ -56,6 +58,14 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             // colorSchemeSeed: const Color.fromARGB(255, 93, 152, 255),
             useMaterial3: true,
+            appBarTheme: const AppBarTheme(
+              centerTitle: true,
+              elevation: 2,
+              titleTextStyle: TextStyle(
+                fontSize: 17,
+                color: Colors.black,
+              ),
+            ),
           ),
           showPerformanceOverlay: false,
           builder: EasyLoading.init(),

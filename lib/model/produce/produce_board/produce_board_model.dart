@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'produce_board.g.dart';
+part 'produce_board_model.g.dart';
 
 @JsonSerializable()
 class ProduceBoardModel extends Object {

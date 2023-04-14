@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/model/produce/produce_index_data/produce_index_data.dart';
+import 'package:flutter_demo/model/produce/produce_index_data/produce_index_data_model.dart';
 import 'package:flutter_demo/widgets/z_card.dart';
 
 class ProduceLivestock extends StatelessWidget {
@@ -8,7 +8,7 @@ class ProduceLivestock extends StatelessWidget {
     required this.produceData,
   });
 
-  final ProduceIndexData produceData;
+  final ProduceIndexDataModel? produceData;
 
   @override
   Widget build(BuildContext context) {
@@ -23,37 +23,37 @@ class ProduceLivestock extends StatelessWidget {
           createStockWidget(
             name: '经产母猪',
             color: const Color(0xff74c4f2),
-            num: produceData.produceSowNum.num,
+            num: produceData == null ? 0 : produceData!.produceSowNum.num,
             context: context,
           ),
           createStockWidget(
             name: '后备猪',
             color: const Color(0xfff27474),
-            num: produceData.backSowNum.num,
+            num: produceData == null ? 0 : produceData!.backSowNum.num,
             context: context,
           ),
           createStockWidget(
             name: '哺乳母猪',
             color: const Color(0xff81f274),
-            num: produceData.bornNum.num,
+            num: produceData == null ? 0 : produceData!.bornNum.num,
             context: context,
           ),
           createStockWidget(
             name: '哺乳仔猪',
             color: const Color(0xff7bf3db),
-            num: produceData.bornNum.num,
+            num: produceData == null ? 0 : produceData!.bornNum.num,
             context: context,
           ),
           createStockWidget(
             name: '保育猪',
             color: const Color(0xffde74f2),
-            num: produceData.feedNum.num,
+            num: produceData == null ? 0 : produceData!.feedNum.num,
             context: context,
           ),
           createStockWidget(
             name: '育成猪',
             color: const Color(0xff748df2),
-            num: produceData.adultNum.num,
+            num: produceData == null ? 0 : produceData!.adultNum.num,
             context: context,
           ),
         ],

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/model/produce/produce_index_data/produce_index_data.dart';
+import 'package:flutter_demo/model/produce/produce_index_data/produce_index_data_model.dart';
 import 'package:flutter_demo/widgets/z_card.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,7 +9,7 @@ class ProduceWait extends StatelessWidget {
     required this.produceData,
   });
 
-  final ProduceIndexData produceData;
+  final ProduceIndexDataModel? produceData;
 
   @override
   Widget build(BuildContext context) {
@@ -27,43 +27,43 @@ class ProduceWait extends StatelessWidget {
             name: '待配种',
             color: const Color(0xff346cc2),
             bgColor: const Color(0xffecf3fe),
-            num: produceData.waitBreedNum,
+            num: produceData == null ? 0 : produceData!.waitBreedNum,
           ),
           createWaitWidget(
             name: '待分娩',
             color: const Color(0xff2dc684),
             bgColor: const Color(0xffeffef8),
-            num: produceData.waitBornNum,
+            num: produceData == null ? 0 : produceData!.waitBornNum,
           ),
           createWaitWidget(
             name: '待断奶',
             color: const Color(0xff5ecece),
             bgColor: const Color(0xffecfefc),
-            num: produceData.waitWeaningNum,
+            num: produceData == null ? 0 : produceData!.waitWeaningNum,
           ),
           createWaitWidget(
             name: '待查情',
             color: const Color(0xffd74c34),
             bgColor: const Color(0xfffdf2ef),
-            num: produceData.waitCheckEmotionNum,
+            num: produceData == null ? 0 : produceData!.waitCheckEmotionNum,
           ),
           createWaitWidget(
             name: '待免疫',
             color: const Color(0xffef8828),
             bgColor: const Color(0xfffef6ed),
-            num: produceData.waitImmuneNum,
+            num: produceData == null ? 0 : produceData!.waitImmuneNum,
           ),
           createWaitWidget(
             name: '待审批',
             color: const Color(0xffef8828),
             bgColor: const Color(0xfffef6ed),
-            num: produceData.waitApproveNum,
+            num: produceData == null ? 0 : produceData!.waitApproveNum,
           ),
           createWaitWidget(
-            name: '待审批',
+            name: '待清洗',
             color: const Color(0xffef8828),
             bgColor: const Color(0xfffef6ed),
-            num: produceData.waitWashArea,
+            num: produceData == null ? 0 : produceData!.waitWashArea,
           ),
         ],
       ),

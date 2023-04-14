@@ -1,13 +1,14 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'produce_index_data.dart';
+part of 'produce_index_data_model.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-ProduceIndexData _$ProduceIndexDataFromJson(Map<String, dynamic> json) =>
-    ProduceIndexData(
+ProduceIndexDataModel _$ProduceIndexDataModelFromJson(
+        Map<String, dynamic> json) =>
+    ProduceIndexDataModel(
       ProduceFactoryNum.fromJson(
           json['produce_sow_num'] as Map<String, dynamic>),
       ProduceFactoryNum.fromJson(json['back_sow_num'] as Map<String, dynamic>),
@@ -23,7 +24,8 @@ ProduceIndexData _$ProduceIndexDataFromJson(Map<String, dynamic> json) =>
       json['wait_wash_area'] as int,
     );
 
-Map<String, dynamic> _$ProduceIndexDataToJson(ProduceIndexData instance) =>
+Map<String, dynamic> _$ProduceIndexDataModelToJson(
+        ProduceIndexDataModel instance) =>
     <String, dynamic>{
       'produce_sow_num': instance.produceSowNum,
       'back_sow_num': instance.backSowNum,

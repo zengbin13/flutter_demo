@@ -1,10 +1,8 @@
-import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:json_annotation/json_annotation.dart';
-
-part 'produce_index_data.g.dart';
+part 'produce_index_data_model.g.dart';
 
 @JsonSerializable()
-class ProduceIndexData {
+class ProduceIndexDataModel {
   @JsonKey(name: 'produce_sow_num')
   ProduceFactoryNum produceSowNum;
 
@@ -44,7 +42,7 @@ class ProduceIndexData {
   @JsonKey(name: 'wait_wash_area')
   int waitWashArea;
 
-  ProduceIndexData(
+  ProduceIndexDataModel(
     this.produceSowNum,
     this.backSowNum,
     // this.bornSowNum,
@@ -60,10 +58,10 @@ class ProduceIndexData {
     this.waitWashArea,
   );
 
-  factory ProduceIndexData.fromJson(Map<String, dynamic> srcJson) =>
-      _$ProduceIndexDataFromJson(srcJson);
+  factory ProduceIndexDataModel.fromJson(Map<String, dynamic> srcJson) =>
+      _$ProduceIndexDataModelFromJson(srcJson);
 
-  Map<String, dynamic> toJson() => _$ProduceIndexDataToJson(this);
+  Map<String, dynamic> toJson() => _$ProduceIndexDataModelToJson(this);
 }
 
 @JsonSerializable()

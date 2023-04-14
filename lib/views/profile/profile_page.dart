@@ -25,7 +25,9 @@ class _ProfilePageState extends State<ProfilePage> {
               },
             ),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                context.go('/login');
+              },
               child: const Text('退出登录'),
             ),
           ],
